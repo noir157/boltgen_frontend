@@ -1,0 +1,29 @@
+{
+  "appearance": {
+    "title": "Apparence",
+    "accentColor": "Couleur d'Accent",
+    "display": "Affichage",
+    "brightness": "Luminosité"
+  },
+  "sound": {
+    "title": "Son",
+    "enable": "Activer le Son",
+    "volume": "Volume"
+  },
+  "system": {
+    "title": "Système",
+    "language": "Langue",
+    "notifications": {
+      "title": "Notifications",
+      "description": "Recevoir les notifications système"
+    },
+    "autoSave": {
+      "title": "Sauvegarde Automatique",
+      "description": "Sauvegarder automatiquement les modifications"
+    },
+    "compactMode": {
+      "title": "Mode Compact",
+      "description": "Utiliser des éléments d'interface plus petits"
+    }
+  }
+}

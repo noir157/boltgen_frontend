@@ -24,7 +24,6 @@ export class AccountManager {
   private readonly retryDelay = 1000; 
 
   constructor() {
-    
     const apiUrl = import.meta.env.VITE_API_URL || 'https://web-production-47450.up.railway.app';
     this.baseUrl = apiUrl.endsWith('/') ? apiUrl.slice(0, -1) : apiUrl;
     console.log('API Base URL:', this.baseUrl);
@@ -57,7 +56,8 @@ export class AccountManager {
     });
 
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+      const errorData = await response.json().catch(() => ({}));
+      throw new Error(errorData.message || `HTTP error! status: ${response.status}`);
     }
 
     return response;
@@ -66,7 +66,6 @@ export class AccountManager {
   async checkServerStatus(): Promise<boolean> {
     try {
       log('Checking server status...');
-      
       
       try {
         const response = await this.retryWithBackoff(() => 
@@ -81,7 +80,6 @@ export class AccountManager {
         log('Main status check failed, trying fallback...', 'warn');
       }
 
-      
       try {
         const response = await this.retryWithBackoff(() => 
           this.makeRequest(`${this.baseUrl}/api/healthcheck`)
@@ -95,7 +93,6 @@ export class AccountManager {
         log('Healthcheck failed', 'error');
       }
 
-      
       try {
         const response = await this.retryWithBackoff(() => 
           this.makeRequest(`${this.baseUrl}/ping`)

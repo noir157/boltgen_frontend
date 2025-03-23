@@ -6,26 +6,17 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        mono: ['JetBrains Mono', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
-        sans: ['Inter var', 'sans-serif'],
+        sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
       },
       animation: {
-        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'float': 'float 3s ease-in-out infinite',
+        'bounce-subtle': 'bounce-subtle 1s infinite',
       },
       keyframes: {
-        float: {
-          '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-10px)' },
-        }
+        'bounce-subtle': {
+          '0%, 100%': { transform: 'translateY(-5%)' },
+          '50%': { transform: 'translateY(0)' },
+        },
       },
-      boxShadow: {
-        'glow': '0 0 20px rgba(59, 130, 246, 0.5)',
-        'glow-lg': '0 0 30px rgba(59, 130, 246, 0.5)',
-      },
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-      }
     },
   },
   plugins: [],

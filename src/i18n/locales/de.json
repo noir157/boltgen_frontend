@@ -1,0 +1,29 @@
+{
+  "appearance": {
+    "title": "Aussehen",
+    "accentColor": "Akzentfarbe",
+    "display": "Anzeige",
+    "brightness": "Helligkeit"
+  },
+  "sound": {
+    "title": "Ton",
+    "enable": "Ton aktivieren",
+    "volume": "Lautstärke"
+  },
+  "system": {
+    "title": "System",
+    "language": "Sprache",
+    "notifications": {
+      "title": "Benachrichtigungen",
+      "description": "Systembenachrichtigungen erhalten"
+    },
+    "autoSave": {
+      "title": "Automatisches Speichern",
+      "description": "Änderungen automatisch speichern"
+    },
+    "compactMode": {
+      "title": "Kompakter Modus",
+      "description": "Kleinere Benutzeroberflächen-Elemente verwenden"
+    }
+  }
+}

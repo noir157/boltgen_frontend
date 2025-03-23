@@ -1,0 +1,29 @@
+{
+  "appearance": {
+    "title": "Appearance",
+    "accentColor": "Accent Color",
+    "display": "Display",
+    "brightness": "Brightness"
+  },
+  "sound": {
+    "title": "Sound",
+    "enable": "Enable Sound",
+    "volume": "Volume"
+  },
+  "system": {
+    "title": "System",
+    "language": "Language",
+    "notifications": {
+      "title": "Notifications",
+      "description": "Receive system notifications"
+    },
+    "autoSave": {
+      "title": "Auto-Save",
+      "description": "Automatically save changes"
+    },
+    "compactMode": {
+      "title": "Compact Mode",
+      "description": "Use smaller UI elements"
+    }
+  }
+}
