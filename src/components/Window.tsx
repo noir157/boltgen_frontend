@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Rnd } from 'react-rnd';
 import { X, Minus, Maximize2 } from 'lucide-react';
 import { useStore } from '../store';
+import { DOCK_HEIGHT } from './Dock';
 
 interface WindowProps {
   id: string;
@@ -33,6 +34,25 @@ export const Window: React.FC<WindowProps> = ({
     activeWindow,
   } = useStore();
 
+  useEffect(() => {
+    // Ensure window is within bounds on mount and window resize
+    const handleResize = () => {
+      const maxY = window.innerHeight - DOCK_HEIGHT - size.height;
+      const maxX = window.innerWidth - size.width;
+      
+      if (position.y > maxY || position.x > maxX) {
+        updateWindowPosition(id, {
+          x: Math.min(position.x, maxX),
+          y: Math.min(position.y, maxY)
+        });
+      }
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [id, position, size, updateWindowPosition]);
+
   const handleClick = (e: React.MouseEvent) => {
     e.stopPropagation();
     setActiveWindow(id);
@@ -40,12 +60,42 @@ export const Window: React.FC<WindowProps> = ({
 
   if (isMinimized) return null;
 
-  
   const maximizedStyle = {
     position: { x: 0, y: 8 }, 
     size: {
       width: window.innerWidth,
-      height: window.innerHeight - 8 - 68 
+      height: window.innerHeight - 8 - DOCK_HEIGHT
+    }
+  };
+
+  const handleDragStop = (e: any, d: { x: number; y: number }) => {
+    if (!isMaximized) {
+      const maxY = window.innerHeight - DOCK_HEIGHT - size.height;
+      const maxX = window.innerWidth - size.width;
+      
+      updateWindowPosition(id, {
+        x: Math.min(Math.max(0, d.x), maxX),
+        y: Math.min(Math.max(0, d.y), maxY)
+      });
+    }
+  };
+
+  const handleResizeStop = (e: any, direction: any, ref: any, delta: any, position: { x: number; y: number }) => {
+    if (!isMaximized) {
+      const newWidth = parseInt(ref.style.width);
+      const newHeight = parseInt(ref.style.height);
+      const maxY = window.innerHeight - DOCK_HEIGHT - newHeight;
+      const maxX = window.innerWidth - newWidth;
+
+      updateWindowSize(id, {
+        width: newWidth,
+        height: newHeight
+      });
+
+      updateWindowPosition(id, {
+        x: Math.min(Math.max(0, position.x), maxX),
+        y: Math.min(Math.max(0, position.y), maxY)
+      });
     }
   };
 
@@ -53,20 +103,8 @@ export const Window: React.FC<WindowProps> = ({
     <Rnd
       position={isMaximized ? maximizedStyle.position : position}
       size={isMaximized ? maximizedStyle.size : size}
-      onDragStop={(e, d) => {
-        if (!isMaximized) {
-          updateWindowPosition(id, { x: d.x, y: d.y });
-        }
-      }}
-      onResizeStop={(e, direction, ref, delta, position) => {
-        if (!isMaximized) {
-          updateWindowSize(id, {
-            width: parseInt(ref.style.width),
-            height: parseInt(ref.style.height),
-          });
-          updateWindowPosition(id, position);
-        }
-      }}
+      onDragStop={handleDragStop}
+      onResizeStop={handleResizeStop}
       dragHandleClassName="window-handle"
       enableResizing={!isMaximized}
       disableDragging={isMaximized}

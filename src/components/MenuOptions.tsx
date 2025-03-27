@@ -25,6 +25,7 @@ import { AccountCreator } from './AccountCreator';
 import { SavedAccounts } from './SavedAccounts';
 import { SearchAccounts } from './SearchAccounts';
 import { SystemSettings } from './SystemSettings';
+import { useTranslation } from 'react-i18next';
 
 interface MenuOption {
   id: number;
@@ -51,6 +52,7 @@ export const MenuOptions: React.FC<MenuOptionsProps> = ({
   const [activeOption, setActiveOption] = useState<number | null>(null);
   const [showConfirmation, setShowConfirmation] = useState(false);
   const { addWindow, systemSettings, lockSystem } = useStore();
+  const { t } = useTranslation();
 
   const handleOptionClick = (option: MenuOption) => {
     setActiveOption(option.id);
@@ -97,7 +99,7 @@ export const MenuOptions: React.FC<MenuOptionsProps> = ({
             localStorage.setItem('savedAccounts', JSON.stringify(mergedAccounts));
             
             addWindow({
-              title: 'Saved Accounts',
+              title: t('windows.savedAccounts'),
               content: <SavedAccounts />,
               position: { x: 150, y: 150 },
               size: { width: 500, height: 600 },
@@ -116,13 +118,13 @@ export const MenuOptions: React.FC<MenuOptionsProps> = ({
   };
 
   const getMenuOptions = (): { [key: string]: MenuOption[] } => ({
-    'Account': [
+    [t('menu.account')]: [
       {
         id: 1,
-        label: "Create Account",
+        label: t('actions.create'),
         icon: <Terminal size={16} />,
         action: () => addWindow({
-          title: 'Account Creator',
+          title: t('windows.accountCreator'),
           content: <AccountCreator />,
           position: { x: 100, y: 100 },
           size: { width: 600, height: 500 },
@@ -133,10 +135,10 @@ export const MenuOptions: React.FC<MenuOptionsProps> = ({
       },
       {
         id: 2,
-        label: "Saved Accounts",
+        label: t('actions.save'),
         icon: <Save size={16} />,
         action: () => addWindow({
-          title: 'Saved Accounts',
+          title: t('windows.savedAccounts'),
           content: <SavedAccounts />,
           position: { x: 150, y: 150 },
           size: { width: 500, height: 600 },
@@ -148,23 +150,23 @@ export const MenuOptions: React.FC<MenuOptionsProps> = ({
       },
       {
         id: 4,
-        label: "Sign Out",
+        label: t('actions.signOut'),
         icon: <LogOut size={16} />,
         action: () => lockSystem(),
         shortcut: "⌘Q"
       }
     ],
-    'Tools': [
+    [t('menu.tools')]: [
       {
         id: 6,
-        label: "Import Accounts",
+        label: t('actions.import'),
         icon: <Upload size={16} />,
         action: importAccounts,
         shortcut: "⌘I"
       },
       {
         id: 7,
-        label: "Export Accounts",
+        label: t('actions.export'),
         icon: <Download size={16} />,
         action: exportAccounts,
         shortcut: "⌘E",
@@ -172,10 +174,10 @@ export const MenuOptions: React.FC<MenuOptionsProps> = ({
       },
       {
         id: 8,
-        label: "Search Accounts",
+        label: t('actions.search'),
         icon: <Search size={16} />,
         action: () => addWindow({
-          title: 'Search Accounts',
+          title: t('windows.searchAccounts'),
           content: <SearchAccounts />,
           position: { x: 200, y: 200 },
           size: { width: 600, height: 500 },
@@ -185,13 +187,13 @@ export const MenuOptions: React.FC<MenuOptionsProps> = ({
         shortcut: "⌘F"
       }
     ],
-    'Settings': [
+    [t('menu.settings')]: [
       {
         id: 9,
-        label: "Preferences",
+        label: t('actions.preferences'),
         icon: <Settings size={16} />,
         action: () => addWindow({
-          title: 'System Settings',
+          title: t('windows.systemSettings'),
           content: <SystemSettings />,
           position: { x: 200, y: 200 },
           size: { width: 700, height: 500 },
@@ -201,7 +203,7 @@ export const MenuOptions: React.FC<MenuOptionsProps> = ({
         shortcut: "⌘,"
       }
     ],
-    'Help': [
+    [t('menu.help')]: [
       {
         id: 12,
         label: "GitHub Repository",
@@ -218,7 +220,7 @@ export const MenuOptions: React.FC<MenuOptionsProps> = ({
           content: (
             <div className="p-6 text-center">
               <h2 className="text-2xl font-bold mb-2">Bolt Account Creator</h2>
-              <p className="text-gray-600 dark:text-gray-400 mb-4">Version 1.0.0</p>
+              <p className="text-gray-600 dark:text-gray-400 mb-4">Version 1.0.1</p>
               <p className="text-sm text-gray-500 dark:text-gray-500">
                 © 2025 Noir. All rights reserved.
               </p>
@@ -234,6 +236,7 @@ export const MenuOptions: React.FC<MenuOptionsProps> = ({
   });
 
   const menuOptions = getMenuOptions();
+  const translatedTitle = Object.keys(menuOptions).find(key => key === title) || title;
 
   return (
     <AnimatePresence>
@@ -257,10 +260,10 @@ export const MenuOptions: React.FC<MenuOptionsProps> = ({
             className="w-64 bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-lg shadow-xl border border-white/20 dark:border-white/10 overflow-hidden"
           >
             <div className="px-3 py-2 bg-white/50 dark:bg-gray-900/50 border-b border-white/10 dark:border-white/5">
-              <h3 className="text-sm font-medium text-gray-700 dark:text-gray-200">{title}</h3>
+              <h3 className="text-sm font-medium text-gray-700 dark:text-gray-200">{translatedTitle}</h3>
             </div>
             <div className="py-1">
-              {menuOptions[title]?.map((option) => (
+              {menuOptions[translatedTitle]?.map((option) => (
                 <React.Fragment key={option.id}>
                   <motion.button
                     whileHover={{ backgroundColor: 'rgba(255, 255, 255, 0.1)' }}

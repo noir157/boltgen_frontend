@@ -2,24 +2,24 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { User, Lock, XCircle, Users } from 'lucide-react';
 import { useStore } from '../store';
+import { useTranslation } from 'react-i18next';
 
 export const LockScreen: React.FC = () => {
   const { systemSettings, unlockSystem } = useStore();
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [isShaking, setIsShaking] = useState(false);
+  const { t } = useTranslation();
 
   const handleUnlock = (e: React.FormEvent) => {
     e.preventDefault();
     
     if (!password.trim()) {
-      setError('Please enter your password');
+      setError(t('lockScreen.enterPassword'));
       setIsShaking(true);
       setTimeout(() => setIsShaking(false), 500);
       return;
     }
-
-    
     
     unlockSystem();
     setPassword('');
@@ -55,19 +55,16 @@ export const LockScreen: React.FC = () => {
               } : {}}
               className="space-y-6"
             >
-              {/* User Avatar */}
               <div className="flex justify-center">
                 <div className="w-24 h-24 rounded-full bg-white/10 backdrop-blur-xl border-2 border-white/20 flex items-center justify-center">
                   <User size={48} className="text-white/80" />
                 </div>
               </div>
 
-              {/* User Name */}
               <h2 className="text-2xl font-medium text-white">
                 {systemSettings.username || 'User'}
               </h2>
 
-              {/* Password Form */}
               <form onSubmit={handleUnlock} className="space-y-4">
                 <div className="relative">
                   <input
@@ -77,7 +74,7 @@ export const LockScreen: React.FC = () => {
                       setPassword(e.target.value);
                       setError('');
                     }}
-                    placeholder="Enter Password"
+                    placeholder={t('lockScreen.enterPassword')}
                     className={`w-full px-4 py-3 bg-white/10 backdrop-blur-xl border ${
                       error ? 'border-red-400' : 'border-white/20'
                     } rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/30`}
@@ -100,20 +97,18 @@ export const LockScreen: React.FC = () => {
                   type="submit"
                   className="px-8 py-2 bg-white/10 hover:bg-white/20 backdrop-blur-xl border border-white/20 rounded-lg text-white transition-colors duration-200"
                 >
-                  Unlock
+                  {t('lockScreen.unlock')}
                 </button>
               </form>
 
-              {/* Switch User Button */}
               <button className="flex items-center justify-center gap-2 text-white/70 hover:text-white transition-colors duration-200 mx-auto">
                 <Users size={16} />
-                <span>Switch User</span>
+                <span>{t('lockScreen.switchUser')}</span>
               </button>
             </motion.div>
           </motion.div>
         </div>
 
-        {/* Time and Date */}
         <div className="absolute top-8 left-1/2 transform -translate-x-1/2 text-center text-white">
           <div className="text-6xl font-light mb-2">
             {new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Copy, Trash2, Save } from 'lucide-react';
+import { useStore } from '../store';
 
 interface SavedAccount {
   id: string;
@@ -13,6 +14,7 @@ interface SavedAccount {
 export const SavedAccounts: React.FC = () => {
   const [savedAccounts, setSavedAccounts] = React.useState<SavedAccount[]>([]);
   const [copied, setCopied] = React.useState<string | null>(null);
+  const { addNotification } = useStore();
 
   React.useEffect(() => {
     loadSavedAccounts();
@@ -26,9 +28,16 @@ export const SavedAccounts: React.FC = () => {
   };
 
   const deleteAccount = (id: string) => {
+    const account = savedAccounts.find(acc => acc.id === id);
     const updatedAccounts = savedAccounts.filter(account => account.id !== id);
     localStorage.setItem('savedAccounts', JSON.stringify(updatedAccounts));
     setSavedAccounts(updatedAccounts);
+    
+    addNotification({
+      title: 'Account Deleted',
+      message: `Account ${account?.username} has been deleted`,
+      type: 'info'
+    });
   };
 
   const copyToClipboard = async (text: string, field: string) => {
@@ -36,8 +45,20 @@ export const SavedAccounts: React.FC = () => {
       await navigator.clipboard.writeText(text);
       setCopied(field);
       setTimeout(() => setCopied(null), 2000);
+      
+      addNotification({
+        title: 'Copied to Clipboard',
+        message: `${field.split('-')[0].charAt(0).toUpperCase() + field.split('-')[0].slice(1)} has been copied to clipboard`,
+        type: 'success'
+      });
     } catch (err) {
       console.error('Failed to copy:', err);
+      
+      addNotification({
+        title: 'Copy Failed',
+        message: 'Failed to copy text to clipboard',
+        type: 'error'
+      });
     }
   };
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Terminal,
@@ -10,6 +10,10 @@ import { useStore } from '../store';
 import { AccountCreator } from './AccountCreator';
 import { SystemSettings } from './SystemSettings';
 import { SavedAccounts } from './SavedAccounts';
+import { useTranslation } from 'react-i18next';
+
+// Height of the dock plus padding
+export const DOCK_HEIGHT = 84; // 68px dock height + 16px padding
 
 const DockItem: React.FC<{
   icon: React.ReactNode;
@@ -87,7 +91,17 @@ const DockItem: React.FC<{
 
 export const Dock: React.FC = () => {
   const { addWindow, windows, minimizeWindow, setActiveWindow } = useStore();
+  const { t } = useTranslation();
+  const [windowHeight, setWindowHeight] = useState(window.innerHeight);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowHeight(window.innerHeight);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
   
   const handleWindowClick = (window: any) => {
     if (window.isMinimized) {
@@ -96,15 +110,24 @@ export const Dock: React.FC = () => {
     setActiveWindow(window.id);
   };
 
+  const getInitialWindowPosition = (index: number) => {
+    const baseX = 100 + (index * 50);
+    const baseY = 100 + (index * 50);
+    const maxY = windowHeight - DOCK_HEIGHT - 500; // 500 is default window height
+    return {
+      x: Math.min(baseX, window.innerWidth - 600), // 600 is default window width
+      y: Math.min(baseY, maxY)
+    };
+  };
   
   const pinnedApps = [
     { 
       icon: <UserPlus size={24} />, 
-      label: "Account Creator", 
+      label: t('windows.accountCreator'),
       onClick: () => addWindow({
-        title: 'Account Creator',
+        title: t('windows.accountCreator'),
         content: <AccountCreator />,
-        position: { x: 150, y: 150 },
+        position: getInitialWindowPosition(0),
         size: { width: 600, height: 500 },
         isMinimized: false,
         isMaximized: false
@@ -112,11 +135,11 @@ export const Dock: React.FC = () => {
     },
     { 
       icon: <Users size={24} />, 
-      label: "Saved Accounts", 
+      label: t('windows.savedAccounts'),
       onClick: () => addWindow({
-        title: 'Saved Accounts',
+        title: t('windows.savedAccounts'),
         content: <SavedAccounts />,
-        position: { x: 200, y: 200 },
+        position: getInitialWindowPosition(1),
         size: { width: 500, height: 600 },
         isMinimized: false,
         isMaximized: false
@@ -124,11 +147,11 @@ export const Dock: React.FC = () => {
     },
     { 
       icon: <Settings size={24} />, 
-      label: "System Settings", 
+      label: t('windows.systemSettings'),
       onClick: () => addWindow({
-        title: 'System Settings',
+        title: t('windows.systemSettings'),
         content: <SystemSettings />,
-        position: { x: 300, y: 300 },
+        position: getInitialWindowPosition(2),
         size: { width: 700, height: 500 },
         isMinimized: false,
         isMaximized: false
@@ -144,7 +167,6 @@ export const Dock: React.FC = () => {
         transition={{ type: "spring", stiffness: 260, damping: 20 }}
         className="bg-black/20 backdrop-blur-xl p-3 rounded-2xl flex items-center space-x-3 border border-white/10 shadow-2xl"
       >
-        {/* Pinned Apps */}
         {pinnedApps.map((app, index) => (
           <DockItem
             key={index}
@@ -155,18 +177,16 @@ export const Dock: React.FC = () => {
           />
         ))}
 
-        {/* Divider - Only show if there are open windows */}
         {windows.length > 0 && (
           <div className="h-8 w-px bg-white/20 mx-2" />
         )}
 
-        {/* Open Windows */}
         {windows.map((window) => (
           <DockItem
             key={window.id}
-            icon={window.title === 'Account Creator' ? <UserPlus size={20} /> :
-                  window.title === 'Saved Accounts' ? <Users size={20} /> :
-                  window.title === 'System Settings' ? <Settings size={20} /> :
+            icon={window.title === t('windows.accountCreator') ? <UserPlus size={20} /> :
+                  window.title === t('windows.savedAccounts') ? <Users size={20} /> :
+                  window.title === t('windows.systemSettings') ? <Settings size={20} /> :
                   <Terminal size={20} />}
             label={window.title}
             isActive={!window.isMinimized}

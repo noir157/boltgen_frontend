@@ -20,10 +20,71 @@
     "autoSave": {
       "title": "Sauvegarde Automatique",
       "description": "Sauvegarder automatiquement les modifications"
-    },
-    "compactMode": {
-      "title": "Mode Compact",
-      "description": "Utiliser des éléments d'interface plus petits"
     }
+  },
+  "menu": {
+    "account": "Compte",
+    "tools": "Outils",
+    "settings": "Paramètres",
+    "help": "Aide"
+  },
+  "actions": {
+    "create": "Initialiser la Création de Compte",
+    "createAnother": "Créer un Autre Compte",
+    "save": "Sauvegarder le Compte",
+    "signOut": "Déconnexion",
+    "import": "Importer des Comptes",
+    "export": "Exporter des Comptes",
+    "search": "Rechercher des Comptes",
+    "preferences": "Préférences"
+  },
+  "windows": {
+    "accountCreator": "Créateur de Compte",
+    "savedAccounts": "Comptes Sauvegardés",
+    "systemSettings": "Paramètres Système",
+    "searchAccounts": "Rechercher des Comptes"
+  },
+  "notifications": {
+    "copied": "Copié dans le presse-papiers",
+    "accountCreated": "Compte Créé",
+    "accountCreatedMessage": "Nouveau compte créé avec succès",
+    "accountSaved": "Compte Sauvegardé",
+    "accountSavedMessage": "Compte sauvegardé avec succès",
+    "accountDeleted": "Compte Supprimé",
+    "accountDeletedMessage": "Compte supprimé avec succès"
+  },
+  "creator": {
+    "ready": "Système prêt pour la création de compte...",
+    "operational": "Tous les services sont opérationnels...",
+    "waiting": "En attente de votre commande...",
+    "initializing": "Initialisation de la séquence de création...",
+    "configuring": "Configuration des paramètres du compte...",
+    "connecting": "Établissement d'une connexion sécurisée...",
+    "processing": "Traitement de la demande..."
+  },
+  "error": {
+    "detected": "Erreur Détectée",
+    "serverOffline": "Le serveur ne répond pas. Veuillez réessayer plus tard.",
+    "accountCreationFailed": "Échec de la Création du Compte",
+    "copyFailed": "Échec de la Copie",
+    "copyFailedMessage": "Échec de la copie dans le presse-papiers",
+    "unknown": "Une erreur inconnue s'est produite"
+  },
+  "success": {
+    "accountCreated": "Compte Créé avec Succès"
+  },
+  "lockScreen": {
+    "enterPassword": "Entrer le Mot de Passe",
+    "unlock": "Déverrouiller",
+    "switchUser": "Changer d'Utilisateur"
+  },
+  "common": {
+    "email": "Email",
+    "username": "Nom d'Utilisateur",
+    "password": "Mot de Passe",
+    "created": "Créé le",
+    "noResults": "Aucun résultat trouvé",
+    "retry": "Réessayer",
+    "close": "Fermer"
   }
 }

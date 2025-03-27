@@ -1,6 +1,6 @@
 {
   "appearance": {
-    "title": "Aussehen",
+    "title": "Erscheinungsbild",
     "accentColor": "Akzentfarbe",
     "display": "Anzeige",
     "brightness": "Helligkeit"
@@ -20,10 +20,71 @@
     "autoSave": {
       "title": "Automatisches Speichern",
       "description": "Änderungen automatisch speichern"
-    },
-    "compactMode": {
-      "title": "Kompakter Modus",
-      "description": "Kleinere Benutzeroberflächen-Elemente verwenden"
     }
+  },
+  "menu": {
+    "account": "Konto",
+    "tools": "Werkzeuge",
+    "settings": "Einstellungen",
+    "help": "Hilfe"
+  },
+  "actions": {
+    "create": "Kontoerstellung starten",
+    "createAnother": "Weiteres Konto erstellen",
+    "save": "Konto speichern",
+    "signOut": "Abmelden",
+    "import": "Konten importieren",
+    "export": "Konten exportieren",
+    "search": "Konten suchen",
+    "preferences": "Einstellungen"
+  },
+  "windows": {
+    "accountCreator": "Konto-Generator",
+    "savedAccounts": "Gespeicherte Konten",
+    "systemSettings": "Systemeinstellungen",
+    "searchAccounts": "Konten durchsuchen"
+  },
+  "notifications": {
+    "copied": "In die Zwischenablage kopiert",
+    "accountCreated": "Konto erstellt",
+    "accountCreatedMessage": "Neues Konto wurde erfolgreich erstellt",
+    "accountSaved": "Konto gespeichert",
+    "accountSavedMessage": "Konto wurde erfolgreich gespeichert",
+    "accountDeleted": "Konto gelöscht",
+    "accountDeletedMessage": "Konto wurde erfolgreich gelöscht"
+  },
+  "creator": {
+    "ready": "System bereit für Kontoerstellung...",
+    "operational": "Alle Dienste betriebsbereit...",
+    "waiting": "Warte auf Ihren Befehl...",
+    "initializing": "Initialisiere Erstellungssequenz...",
+    "configuring": "Konfiguriere Kontoparameter...",
+    "connecting": "Stelle sichere Verbindung her...",
+    "processing": "Verarbeite Anfrage..."
+  },
+  "error": {
+    "detected": "Fehler erkannt",
+    "serverOffline": "Server antwortet nicht. Bitte versuchen Sie es später erneut.",
+    "accountCreationFailed": "Kontoerstellung fehlgeschlagen",
+    "copyFailed": "Kopieren fehlgeschlagen",
+    "copyFailedMessage": "Text konnte nicht in die Zwischenablage kopiert werden",
+    "unknown": "Ein unbekannter Fehler ist aufgetreten"
+  },
+  "success": {
+    "accountCreated": "Konto erfolgreich erstellt"
+  },
+  "lockScreen": {
+    "enterPassword": "Passwort eingeben",
+    "unlock": "Entsperren",
+    "switchUser": "Benutzer wechseln"
+  },
+  "common": {
+    "email": "E-Mail",
+    "username": "Benutzername",
+    "password": "Passwort",
+    "created": "Erstellt am",
+    "noResults": "Keine Ergebnisse gefunden",
+    "retry": "Erneut versuchen",
+    "close": "Schließen"
   }
 }

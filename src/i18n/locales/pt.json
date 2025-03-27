@@ -1,31 +1,90 @@
 {
-  "newDocument": "Novo Documento",
-  "save": "Salvar",
-  "search": "Pesquisar",
-  "darkMode": "Modo Escuro",
-  "fontSize": "Tamanho da Fonte",
-  "fontFamily": "Família da Fonte",
-  "autoSave": "Salvamento Automático",
-  "characters": "caracteres",
-  "words": "palavras",
-  "lastModified": "Última modificação",
-  "export": {
-    "pdf": "Exportar como PDF",
-    "doc": "Exportar como DOC",
-    "txt": "Exportar como TXT"
+  "appearance": {
+    "title": "Aparência",
+    "accentColor": "Cor de Destaque",
+    "display": "Tela",
+    "brightness": "Brilho"
   },
-  "toolbar": {
-    "bold": "Negrito",
-    "italic": "Itálico",
-    "underline": "Sublinhado",
-    "alignLeft": "Alinhar à Esquerda",
-    "alignCenter": "Centralizar",
-    "alignRight": "Alinhar à Direita",
-    "alignJustify": "Justificar",
-    "bulletList": "Lista com Marcadores",
-    "orderedList": "Lista Numerada",
-    "image": "Inserir Imagem",
-    "link": "Inserir Link",
-    "table": "Inserir Tabela"
+  "sound": {
+    "title": "Som",
+    "enable": "Ativar Som",
+    "volume": "Volume"
+  },
+  "system": {
+    "title": "Sistema",
+    "language": "Idioma",
+    "notifications": {
+      "title": "Notificações",
+      "description": "Receber notificações do sistema"
+    },
+    "autoSave": {
+      "title": "Salvamento Automático",
+      "description": "Salvar alterações automaticamente"
+    }
+  },
+  "menu": {
+    "account": "Conta",
+    "tools": "Ferramentas",
+    "settings": "Configurações",
+    "help": "Ajuda"
+  },
+  "actions": {
+    "create": "Iniciar Criação de Conta",
+    "createAnother": "Criar Outra Conta",
+    "save": "Salvar Conta",
+    "signOut": "Sair",
+    "import": "Importar Contas",
+    "export": "Exportar Contas",
+    "search": "Pesquisar Contas",
+    "preferences": "Preferências"
+  },
+  "windows": {
+    "accountCreator": "Criador de Contas",
+    "savedAccounts": "Contas Salvas",
+    "systemSettings": "Configurações do Sistema",
+    "searchAccounts": "Pesquisar Contas"
+  },
+  "notifications": {
+    "copied": "Copiado para a área de transferência",
+    "accountCreated": "Conta Criada",
+    "accountCreatedMessage": "Nova conta foi criada com sucesso",
+    "accountSaved": "Conta Salva",
+    "accountSavedMessage": "Conta foi salva com sucesso",
+    "accountDeleted": "Conta Excluída",
+    "accountDeletedMessage": "Conta foi excluída com sucesso"
+  },
+  "creator": {
+    "ready": "Sistema pronto para criar conta...",
+    "operational": "Todos os serviços operacionais...",
+    "waiting": "Aguardando seu comando...",
+    "initializing": "Iniciando sequência de criação...",
+    "configuring": "Configurando parâmetros da conta...",
+    "connecting": "Estabelecendo conexão segura...",
+    "processing": "Processando solicitação..."
+  },
+  "error": {
+    "detected": "Erro Detectado",
+    "serverOffline": "O servidor não está respondendo. Tente novamente mais tarde.",
+    "accountCreationFailed": "Falha na Criação da Conta",
+    "copyFailed": "Falha ao Copiar",
+    "copyFailedMessage": "Falha ao copiar texto para a área de transferência",
+    "unknown": "Ocorreu um erro desconhecido"
+  },
+  "success": {
+    "accountCreated": "Conta Criada com Sucesso"
+  },
+  "lockScreen": {
+    "enterPassword": "Digite a Senha",
+    "unlock": "Desbloquear",
+    "switchUser": "Trocar Usuário"
+  },
+  "common": {
+    "email": "Email",
+    "username": "Nome de Usuário",
+    "password": "Senha",
+    "created": "Criado em",
+    "noResults": "Nenhum resultado encontrado",
+    "retry": "Tentar Novamente",
+    "close": "Fechar"
   }
 }

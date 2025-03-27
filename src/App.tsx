@@ -6,16 +6,19 @@ import { WindowManager } from './components/WindowManager';
 import { useState } from 'react';
 import { ControlCenter } from './components/ControlCenter';
 import { NotificationCenter } from './components/NotificationCenter';
-import { Spotlight } from './components/Spotlight';
 import { LockScreen } from './components/LockScreen';
 import { AnimatePresence } from 'framer-motion';
 import { useStore } from './store';
+import { Toast } from './components/Toast';
+import { useRealTimeUpdates } from './hooks/useRealTimeUpdates';
 
 function App() {
   const [showControlCenter, setShowControlCenter] = useState(false);
   const [showNotificationCenter, setShowNotificationCenter] = useState(false);
-  const [showSpotlight, setShowSpotlight] = useState(false);
-  const { systemSettings } = useStore();
+  const { systemSettings, toast, clearToast } = useStore();
+
+  // Initialize real-time updates
+  useRealTimeUpdates();
 
   return (
     <div className="h-screen w-screen overflow-hidden">
@@ -52,10 +55,14 @@ function App() {
           {showNotificationCenter && (
             <NotificationCenter onClose={() => setShowNotificationCenter(false)} />
           )}
-          {showSpotlight && (
-            <Spotlight onClose={() => setShowSpotlight(false)} />
-          )}
           {systemSettings.isLocked && <LockScreen />}
+          {toast && (
+            <Toast
+              message={toast.message}
+              type={toast.type}
+              onClose={clearToast}
+            />
+          )}
         </AnimatePresence>
       </div>
     </div>

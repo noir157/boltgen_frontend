@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Wifi, Battery, Volume2 } from 'lucide-react';
 import { format } from 'date-fns';
 import { MenuOptions } from './MenuOptions';
+import { useTranslation } from 'react-i18next';
 
 const AppleLogo = () => (
   <svg 
@@ -27,6 +28,7 @@ export const MenuBar: React.FC<MenuBarProps> = ({
   const [time, setTime] = React.useState(new Date());
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [menuPosition, setMenuPosition] = useState({ x: 0, y: 28 });
+  const { t } = useTranslation();
 
   React.useEffect(() => {
     const timer = setInterval(() => setTime(new Date()), 1000);
@@ -48,27 +50,27 @@ export const MenuBar: React.FC<MenuBarProps> = ({
           </button>
           <button 
             className="hover:bg-white/10 dark:hover:bg-white/5 px-2 py-0.5 rounded"
-            onClick={(e) => handleMenuClick('Account', e)}
+            onClick={(e) => handleMenuClick(t('menu.account'), e)}
           >
-            Account
+            {t('menu.account')}
           </button>
           <button 
             className="hover:bg-white/10 dark:hover:bg-white/5 px-2 py-0.5 rounded"
-            onClick={(e) => handleMenuClick('Tools', e)}
+            onClick={(e) => handleMenuClick(t('menu.tools'), e)}
           >
-            Tools
+            {t('menu.tools')}
           </button>
           <button 
             className="hover:bg-white/10 dark:hover:bg-white/5 px-2 py-0.5 rounded"
-            onClick={(e) => handleMenuClick('Settings', e)}
+            onClick={(e) => handleMenuClick(t('menu.settings'), e)}
           >
-            Settings
+            {t('menu.settings')}
           </button>
           <button 
             className="hover:bg-white/10 dark:hover:bg-white/5 px-2 py-0.5 rounded"
-            onClick={(e) => handleMenuClick('Help', e)}
+            onClick={(e) => handleMenuClick(t('menu.help'), e)}
           >
-            Help
+            {t('menu.help')}
           </button>
         </div>
 
@@ -98,4 +100,4 @@ export const MenuBar: React.FC<MenuBarProps> = ({
       />
     </>
   );
-};
+}

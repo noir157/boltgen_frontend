@@ -20,10 +20,71 @@
     "autoSave": {
       "title": "Auto-Guardado",
       "description": "Guardar cambios automáticamente"
-    },
-    "compactMode": {
-      "title": "Modo Compacto",
-      "description": "Usar elementos de interfaz más pequeños"
     }
+  },
+  "menu": {
+    "account": "Cuenta",
+    "tools": "Herramientas",
+    "settings": "Ajustes",
+    "help": "Ayuda"
+  },
+  "actions": {
+    "create": "Iniciar Creación de Cuenta",
+    "createAnother": "Crear Otra Cuenta",
+    "save": "Guardar Cuenta",
+    "signOut": "Cerrar Sesión",
+    "import": "Importar Cuentas",
+    "export": "Exportar Cuentas",
+    "search": "Buscar Cuentas",
+    "preferences": "Preferencias"
+  },
+  "windows": {
+    "accountCreator": "Creador de Cuentas",
+    "savedAccounts": "Cuentas Guardadas",
+    "systemSettings": "Ajustes del Sistema",
+    "searchAccounts": "Buscar Cuentas"
+  },
+  "notifications": {
+    "copied": "Copiado al portapapeles",
+    "accountCreated": "Cuenta Creada",
+    "accountCreatedMessage": "Nueva cuenta creada exitosamente",
+    "accountSaved": "Cuenta Guardada",
+    "accountSavedMessage": "Cuenta guardada exitosamente",
+    "accountDeleted": "Cuenta Eliminada",
+    "accountDeletedMessage": "Cuenta eliminada exitosamente"
+  },
+  "creator": {
+    "ready": "Sistema listo para crear cuenta...",
+    "operational": "Todos los servicios operativos...",
+    "waiting": "Esperando su comando...",
+    "initializing": "Iniciando secuencia de creación...",
+    "configuring": "Configurando parámetros de la cuenta...",
+    "connecting": "Estableciendo conexión segura...",
+    "processing": "Procesando solicitud..."
+  },
+  "error": {
+    "detected": "Error Detectado",
+    "serverOffline": "El servidor no responde. Por favor, inténtelo más tarde.",
+    "accountCreationFailed": "Error en la Creación de la Cuenta",
+    "copyFailed": "Error al Copiar",
+    "copyFailedMessage": "Error al copiar texto al portapapeles",
+    "unknown": "Ha ocurrido un error desconocido"
+  },
+  "success": {
+    "accountCreated": "Cuenta Creada Exitosamente"
+  },
+  "lockScreen": {
+    "enterPassword": "Introducir Contraseña",
+    "unlock": "Desbloquear",
+    "switchUser": "Cambiar Usuario"
+  },
+  "common": {
+    "email": "Correo",
+    "username": "Usuario",
+    "password": "Contraseña",
+    "created": "Creado",
+    "noResults": "No se encontraron resultados",
+    "retry": "Reintentar",
+    "close": "Cerrar"
   }
 }

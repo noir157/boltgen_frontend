@@ -20,10 +20,71 @@
     "autoSave": {
       "title": "Auto-Save",
       "description": "Automatically save changes"
-    },
-    "compactMode": {
-      "title": "Compact Mode",
-      "description": "Use smaller UI elements"
     }
+  },
+  "menu": {
+    "account": "Account",
+    "tools": "Tools",
+    "settings": "Settings",
+    "help": "Help"
+  },
+  "actions": {
+    "create": "Initialize Account Creation",
+    "createAnother": "Create Another Account",
+    "save": "Save Account",
+    "signOut": "Sign Out",
+    "import": "Import Accounts",
+    "export": "Export Accounts",
+    "search": "Search Accounts",
+    "preferences": "Preferences"
+  },
+  "windows": {
+    "accountCreator": "Account Creator",
+    "savedAccounts": "Saved Accounts",
+    "systemSettings": "System Settings",
+    "searchAccounts": "Search Accounts"
+  },
+  "notifications": {
+    "copied": "Copied to clipboard",
+    "accountCreated": "Account Created",
+    "accountCreatedMessage": "New account has been created successfully",
+    "accountSaved": "Account Saved",
+    "accountSavedMessage": "Account has been saved successfully",
+    "accountDeleted": "Account Deleted",
+    "accountDeletedMessage": "Account has been deleted successfully"
+  },
+  "creator": {
+    "ready": "System ready for account creation...",
+    "operational": "All services operational...",
+    "waiting": "Awaiting your command...",
+    "initializing": "Initializing creation sequence...",
+    "configuring": "Configuring account parameters...",
+    "connecting": "Establishing secure connection...",
+    "processing": "Processing request..."
+  },
+  "error": {
+    "detected": "Error Detected",
+    "serverOffline": "Server is not responding. Please try again later.",
+    "accountCreationFailed": "Account Creation Failed",
+    "copyFailed": "Copy Failed",
+    "copyFailedMessage": "Failed to copy text to clipboard",
+    "unknown": "An unknown error occurred"
+  },
+  "success": {
+    "accountCreated": "Account Created Successfully"
+  },
+  "lockScreen": {
+    "enterPassword": "Enter Password",
+    "unlock": "Unlock",
+    "switchUser": "Switch User"
+  },
+  "common": {
+    "email": "Email",
+    "username": "Username",
+    "password": "Password",
+    "created": "Created",
+    "noResults": "No results found",
+    "retry": "Retry Operation",
+    "close": "Close"
   }
 }
