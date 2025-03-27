@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { log, delay } from '../utils/helpers';
+import { log } from '../utils/helpers';
 
 export class TempEmailService {
   private baseUrl: string;
