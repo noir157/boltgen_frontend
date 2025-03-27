@@ -1,6 +1,11 @@
 import axios from 'axios';
 import { log } from '../utils/helpers';
 
+// Implementação da função delay que estava faltando
+const delay = (ms: number): Promise<void> => {
+  return new Promise(resolve => setTimeout(resolve, ms));
+};
+
 export class TempEmailService {
   private baseUrl: string;
   private account: { email: string; password: string } | null;
