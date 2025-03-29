@@ -5,11 +5,13 @@ import { subscribeWithSelector } from 'zustand/middleware';
 interface Window {
   id: string;
   title: string;
+  translationKey?: string;
   content: React.ReactNode;
   position: { x: number; y: number };
   size: { width: number; height: number };
   isMinimized: boolean;
   isMaximized: boolean;
+  appType: string;
 }
 
 interface Notification {
@@ -103,21 +105,35 @@ export const useStore = create<Store>()(
           soundVolume: 80,
           brightness: 100,
           notifications: true,
-          language: 'en', // Default language set to English
+          language: 'en',
           autoSave: true,
           username: 'User',
           isLocked: false,
         },
-        addWindow: (window) =>
-          set((state) => {
-            const id = Math.random().toString();
-            const newWindow = { ...window, id };
-            broadcastUpdate('window-added', newWindow);
-            return {
-              windows: [...state.windows, newWindow],
-              activeWindow: id,
-            };
-          }),
+        addWindow: (window) => set((state) => {
+          // Check if an instance of this app type is already open
+          const existingWindow = state.windows.find(w => w.appType === window.appType);
+          if (existingWindow) {
+            // If it exists and is minimized, unminimize it
+            if (existingWindow.isMinimized) {
+              const windows = state.windows.map(w =>
+                w.id === existingWindow.id ? { ...w, isMinimized: false } : w
+              );
+              return { windows, activeWindow: existingWindow.id };
+            }
+            // If it's already open, just focus it
+            return { activeWindow: existingWindow.id };
+          }
+
+          // If no instance exists, create a new window
+          const id = Math.random().toString();
+          const newWindow = { ...window, id };
+          broadcastUpdate('window-added', newWindow);
+          return {
+            windows: [...state.windows, newWindow],
+            activeWindow: id,
+          };
+        }),
         removeWindow: (id) =>
           set((state) => {
             broadcastUpdate('window-removed', id);
@@ -166,10 +182,6 @@ export const useStore = create<Store>()(
         updateSystemSettings: (settings) =>
           set((state) => {
             const newSettings = { ...state.systemSettings, ...settings };
-            // Force English language if trying to change to another language
-            if (settings.language && settings.language !== 'en') {
-              newSettings.language = 'en';
-            }
             updateCSSVariables(newSettings);
             broadcastUpdate('settings-updated', newSettings);
             return { systemSettings: newSettings };
@@ -238,10 +250,7 @@ export const useStore = create<Store>()(
       {
         name: 'bolt-storage',
         partialize: (state) => ({
-          systemSettings: {
-            ...state.systemSettings,
-            language: 'en' // Always persist English as the language
-          },
+          systemSettings: state.systemSettings,
           notifications: state.notifications,
         }),
         onRehydrateStorage: () => (state) => {

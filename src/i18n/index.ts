@@ -22,7 +22,6 @@ i18n
   .use(initReactI18next)
   .init({
     resources,
-    lng: 'en', // Force English as default
     fallbackLng: 'en',
     supportedLngs: ['en', 'es', 'fr', 'de', 'pt'],
     interpolation: {
@@ -39,10 +38,5 @@ i18n.on('languageChanged', (lng) => {
   const store = useStore.getState();
   store.updateSystemSettings({ language: lng });
 });
-
-// Force English if somehow another language is selected
-if (i18n.language !== 'en') {
-  i18n.changeLanguage('en');
-}
 
 export default i18n;

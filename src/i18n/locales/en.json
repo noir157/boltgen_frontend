@@ -19,7 +19,7 @@
     },
     "autoSave": {
       "title": "Auto-Save",
-      "description": "Automatically save changes"
+      "description": "Automatically save accounts"
     }
   },
   "menu": {
@@ -36,7 +36,8 @@
     "import": "Import Accounts",
     "export": "Export Accounts",
     "search": "Search Accounts",
-    "preferences": "Preferences"
+    "preferences": "Preferences",
+    "openInstances": "Open {{count}} instance(s)"
   },
   "windows": {
     "accountCreator": "Account Creator",

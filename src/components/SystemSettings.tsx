@@ -167,7 +167,7 @@ export const SystemSettings: React.FC = () => {
           <div className="flex items-center justify-between">
             <div>
               <span className="text-sm font-medium text-gray-300">{t('system.autoSave.title')}</span>
-              <p className="text-xs text-gray-400">Automatically save accounts</p>
+              <p className="text-xs text-gray-400">{t('system.autoSave.description')}</p>
             </div>
             <label className="relative inline-flex items-center cursor-pointer">
               <input

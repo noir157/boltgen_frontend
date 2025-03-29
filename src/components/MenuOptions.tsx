@@ -220,7 +220,7 @@ export const MenuOptions: React.FC<MenuOptionsProps> = ({
           content: (
             <div className="p-6 text-center">
               <h2 className="text-2xl font-bold mb-2">Bolt Account Creator</h2>
-              <p className="text-gray-600 dark:text-gray-400 mb-4">Version 1.0.1</p>
+              <p className="text-gray-600 dark:text-gray-400 mb-4">Version 1.0.0</p>
               <p className="text-sm text-gray-500 dark:text-gray-500">
                 © 2025 Noir. All rights reserved.
               </p>

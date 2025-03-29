@@ -19,7 +19,7 @@
     },
     "autoSave": {
       "title": "Salvamento Automático",
-      "description": "Salvar alterações automaticamente"
+      "description": "Salvar contas automaticamente"
     }
   },
   "menu": {
