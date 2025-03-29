@@ -100,11 +100,13 @@ export const MenuOptions: React.FC<MenuOptionsProps> = ({
             
             addWindow({
               title: t('windows.savedAccounts'),
+              translationKey: 'windows.savedAccounts',
               content: <SavedAccounts />,
               position: { x: 150, y: 150 },
               size: { width: 500, height: 600 },
               isMinimized: false,
-              isMaximized: false
+              isMaximized: false,
+              appType: 'savedAccounts'
             });
           } catch (error) {
             console.error('Error importing accounts:', error);
@@ -125,11 +127,13 @@ export const MenuOptions: React.FC<MenuOptionsProps> = ({
         icon: <Terminal size={16} />,
         action: () => addWindow({
           title: t('windows.accountCreator'),
+          translationKey: 'windows.accountCreator',
           content: <AccountCreator />,
           position: { x: 100, y: 100 },
           size: { width: 600, height: 500 },
           isMinimized: false,
-          isMaximized: false
+          isMaximized: false,
+          appType: 'accountCreator'
         }),
         shortcut: "⌘N"
       },
@@ -139,11 +143,13 @@ export const MenuOptions: React.FC<MenuOptionsProps> = ({
         icon: <Save size={16} />,
         action: () => addWindow({
           title: t('windows.savedAccounts'),
+          translationKey: 'windows.savedAccounts',
           content: <SavedAccounts />,
           position: { x: 150, y: 150 },
           size: { width: 500, height: 600 },
           isMinimized: false,
-          isMaximized: false
+          isMaximized: false,
+          appType: 'savedAccounts'
         }),
         shortcut: "⌘S",
         divider: true
@@ -178,11 +184,13 @@ export const MenuOptions: React.FC<MenuOptionsProps> = ({
         icon: <Search size={16} />,
         action: () => addWindow({
           title: t('windows.searchAccounts'),
+          translationKey: 'windows.searchAccounts',
           content: <SearchAccounts />,
           position: { x: 200, y: 200 },
           size: { width: 600, height: 500 },
           isMinimized: false,
-          isMaximized: false
+          isMaximized: false,
+          appType: 'searchAccounts'
         }),
         shortcut: "⌘F"
       }
@@ -194,11 +202,13 @@ export const MenuOptions: React.FC<MenuOptionsProps> = ({
         icon: <Settings size={16} />,
         action: () => addWindow({
           title: t('windows.systemSettings'),
+          translationKey: 'windows.systemSettings',
           content: <SystemSettings />,
           position: { x: 200, y: 200 },
           size: { width: 700, height: 500 },
           isMinimized: false,
-          isMaximized: false
+          isMaximized: false,
+          appType: 'systemSettings'
         }),
         shortcut: "⌘,"
       }
@@ -229,7 +239,8 @@ export const MenuOptions: React.FC<MenuOptionsProps> = ({
           position: { x: 250, y: 250 },
           size: { width: 400, height: 300 },
           isMinimized: false,
-          isMaximized: false
+          isMaximized: false,
+          appType: 'about'
         })
       }
     ]
